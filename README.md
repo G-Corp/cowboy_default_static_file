@@ -1,4 +1,4 @@
-= cowboy_default_static_file
+# cowboy_default_static_file
 
 This allows you to specify a default file when using cowboy_static with
 dir or priv_dir. Thus the path will be completed with the default file.
