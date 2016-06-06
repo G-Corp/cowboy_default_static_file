@@ -1,15 +1,17 @@
-PROJECT = cowboy_default_static_file
+include bu.mk
 
-DEP_PLUGINS = mix.mk
-BUILD_DEPS = mix.mk
-ELIXIR_VERSION = ~> 1.2
-dep_mix.mk = git https://github.com/botsunit/mix.mk.git master
+.PHONY: doc docker-compose.yml
+REBAR = ./rebar3
 
-DEPS = bucs cowboy
-dep_bucs = git https://github.com/botsunit/bucs.git 0.0.1
-dep_cowboy = git https://github.com/ninenines/cowboy.git 2.0.0-pre.3
+compile:
+	$(verbose) $(REBAR) compile
 
-include erlang.mk
+elixir:
+	$(verbose) $(REBAR) elixir generate_mix
+	$(verbose) $(REBAR) elixir generate_lib
 
-release: app mix.exs
+dist: compile elixir
+
+distclean:
+	$(verbose) rm -rf _build rebar.lock mix.lock deps
 
