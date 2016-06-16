@@ -1,6 +1,6 @@
 {application, cowboy_default_static_file, [
 	{description, "Cowboy middleware to use a default file with cowboy_static"},
-	{vsn, "1.2.0"},
+	{vsn, "1.2.1"},
 	{modules, []},
 	{registered, []},
 	{applications, [kernel,stdlib,bucs,cowboy]}
