@@ -4,7 +4,7 @@ defmodule Cowboy.Default.Static.File.Mixfile do
   def project do
     [
       app: :cowboy_default_static_file,
-      version: "1.1.1",
+      version: "1.2.0",
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -14,14 +14,14 @@ defmodule Cowboy.Default.Static.File.Mixfile do
 
   def application do
     [
-       applications: [:kernel, :stdlib, :bucs, :cowboy],
+       applications: [:bucs, :cowboy],
        env: []
     ]
   end
 
   defp deps do
     [
-      {:bucs, git: "https://github.com/botsunit/bucs.git", branch: "master"},
+      {:bucs, git: "https://github.com/botsunit/bucs.git", tag: "0.0.2"},
       {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.3"}    
     ]
   end
