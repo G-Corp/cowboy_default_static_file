@@ -21,7 +21,7 @@ defmodule Cowboy.Default.Static.File.Mixfile do
 
   defp deps do
     [
-      {:bucs, git: "https://github.com/botsunit/bucs.git", tag: "0.0.2"},
+      {:bucs, "~> 0.1.0"},
       {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.3"}    
     ]
   end
