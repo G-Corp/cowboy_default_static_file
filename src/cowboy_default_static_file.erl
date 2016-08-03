@@ -4,7 +4,7 @@
 -export([execute/2]).
 
 execute(Req, Env) ->
-  PathInfo = case {lists:keyfind(handler, 1, Env), 
+  PathInfo = case {lists:keyfind(handler, 1, Env),
                    lists:keyfind(handler_opts, 1, Env)} of
                {{handler, cowboy_static},
                 {handler_opts, Opts}}->
@@ -25,7 +25,7 @@ build_path(Req, Path, Opts) ->
                undefined -> [<<"/">>];
                P -> P
              end,
-	Filepath = filename:join([Dir|PathInfo]),
+  Filepath = filename:join([Dir|PathInfo]),
   case filelib:is_dir(Filepath) of
     true ->
       Default = case lists:keyfind(default_file, 1, Opts) of
@@ -38,26 +38,25 @@ build_path(Req, Path, Opts) ->
   end.
 
 priv_path(App, Path) ->
-	case code:priv_dir(App) of
-		{error, bad_name} ->
-			error({badarg, "Can't resolve the priv_dir of application "
-				++ atom_to_list(App)});
-		PrivDir when is_list(Path) ->
-			PrivDir ++ "/" ++ Path;
-		PrivDir when is_binary(Path) ->
-			<< (list_to_binary(PrivDir))/binary, $/, Path/binary >>
-	end.
+  case code:priv_dir(App) of
+    {error, bad_name} ->
+      error({badarg, "Can't resolve the priv_dir of application " ++ atom_to_list(App)});
+    PrivDir when is_list(Path) ->
+      PrivDir ++ "/" ++ Path;
+    PrivDir when is_binary(Path) ->
+      << (list_to_binary(PrivDir))/binary, $/, Path/binary >>
+  end.
 
 fullpath(Path) ->
-	fullpath(filename:split(Path), []).
+  fullpath(filename:split(Path), []).
 fullpath([], Acc) ->
-	filename:join(lists:reverse(Acc));
+  filename:join(lists:reverse(Acc));
 fullpath([<<".">>|Tail], Acc) ->
-	fullpath(Tail, Acc);
+  fullpath(Tail, Acc);
 fullpath([<<"..">>|Tail], Acc=[_]) ->
-	fullpath(Tail, Acc);
+  fullpath(Tail, Acc);
 fullpath([<<"..">>|Tail], [_|Acc]) ->
-	fullpath(Tail, Acc);
+  fullpath(Tail, Acc);
 fullpath([Segment|Tail], Acc) ->
-	fullpath(Tail, [Segment|Acc]).
+  fullpath(Tail, [Segment|Acc]).
 
