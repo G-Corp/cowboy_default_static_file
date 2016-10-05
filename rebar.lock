@@ -5,7 +5,7 @@
   0},
  {<<"cowlib">>,
   {git,"https://github.com/ninenines/cowlib",
-       {ref,"8cf98c9f3d1292c1b08fca5ca99772ae912eaa86"}},
+       {ref,"0d0b0d7937f77cd5ee11268863aeab19b65db94d"}},
   1},
  {<<"ranch">>,
   {git,"https://github.com/ninenines/ranch",
