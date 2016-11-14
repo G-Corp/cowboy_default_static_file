@@ -22,7 +22,7 @@ defmodule Cowboy.Default.Static.File.Mixfile do
 
   defp deps do
     [
-      {:bucs, "~> 0.1.9"},
+      {:bucs, "~> 1.0.0"},
       {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.3"}    
     ]
   end
