@@ -4,7 +4,7 @@ defmodule Cowboy.Default.Static.File.Mixfile do
   def project do
     [
       app: :cowboy_default_static_file,
-      version: "1.2.5",
+      version: "1.3.0",
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
@@ -22,21 +22,27 @@ defmodule Cowboy.Default.Static.File.Mixfile do
 
   defp deps do
     [
-      {:bucs, "~> 1.0.1"},
+      {:bucs, "~> 1.0.2"},
       {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.3"}    
     ]
   end
 
   defp aliases do
-    [compile: [&pre_compile_hooks/1, "compile", &post_compile_hooks/1]]
+    [compile: &compile_with_hooks/1]
   end
 
-  defp pre_compile_hooks(_) do
+  defp compile_with_hooks(args) do
+    pre_compile_hooks()
+    :ok = Mix.Task.run("compile", args)
+    post_compile_hooks()
+  end
+
+  defp pre_compile_hooks() do
     run_hook_cmd [
     ]
   end
 
-  defp post_compile_hooks(_) do
+  defp post_compile_hooks() do
     run_hook_cmd [
     ]
   end

@@ -1,4 +1,4 @@
-[{<<"bucs">>,{pkg,<<"bucs">>,<<"1.0.1">>},0},
+[{<<"bucs">>,{pkg,<<"bucs">>,<<"1.0.2">>},0},
  {<<"cowboy">>,
   {git,"https://github.com/ninenines/cowboy.git",
        {ref,"dbb636034f20736e16eb9d6c809217c9525b6cbd"}},
