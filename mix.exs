@@ -22,7 +22,7 @@ defmodule Cowboy.Default.Static.File.Mixfile do
 
   defp deps do
     [
-      {:bucs, "~> 1.0.2"},
+      {:bucs, "~> 1.0.3"},
       {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.3"}    
     ]
   end
@@ -33,8 +33,9 @@ defmodule Cowboy.Default.Static.File.Mixfile do
 
   defp compile_with_hooks(args) do
     pre_compile_hooks()
-    :ok = Mix.Task.run("compile", args)
+    result = Mix.Task.run("compile", args)
     post_compile_hooks()
+    result
   end
 
   defp pre_compile_hooks() do
