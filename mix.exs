@@ -8,8 +8,8 @@ defmodule Cowboy.Default.Static.File.Mixfile do
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
-      deps: deps,
-      aliases: aliases
+      deps: deps(),
+      aliases: aliases()
     ]
   end
 
@@ -22,7 +22,7 @@ defmodule Cowboy.Default.Static.File.Mixfile do
 
   defp deps do
     [
-      {:bucs, "~> 1.0.3"},
+      {:bucs, "~> 1.0.6"},
       {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.3"}    
     ]
   end
