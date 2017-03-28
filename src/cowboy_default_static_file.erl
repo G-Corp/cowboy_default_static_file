@@ -4,15 +4,14 @@
 -export([execute/2]).
 
 execute(Req, Env) ->
-  PathInfo = case {lists:keyfind(handler, 1, Env),
-                   lists:keyfind(handler_opts, 1, Env)} of
-               {{handler, cowboy_static},
-                {handler_opts, Opts}}->
+  PathInfo = case {maps:get(handler, Env, undefined),
+                   maps:get(handler_opts, Env, undefined)} of
+               {cowboy_static, Opts}->
                  path(Req, Opts);
                _ ->
                  Req
              end,
-  {ok, cowboy_req:set([{path_info, PathInfo}], Req), Env}.
+  {ok, Req#{path_info => PathInfo}, Env}.
 
 path(Req, {priv_dir, App, Path, Opts}) ->
   build_path(Req, priv_path(App, Path), Opts);
