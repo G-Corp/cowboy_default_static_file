@@ -1,0 +1,4 @@
+%{"bucs": {:hex, :bucs, "1.0.9", "18e703058ea49b981581febdadfb20fe6d433602cec9a3550e88db59a322f810", [:make, :mix, :rebar3], []},
+  "cowboy": {:git, "https://github.com/ninenines/cowboy.git", "10dfd8c910bce3ae71146f8f13eef25b34ec093a", [branch: "master"]},
+  "cowlib": {:git, "https://github.com/ninenines/cowlib", "07cde7c6def6eeed0174b270229e7d5175673d87", [ref: "master"]},
+  "ranch": {:git, "https://github.com/ninenines/ranch", "40809cd2b257a8a53bcb5588ecaa88cc5381ff5c", [ref: "1.3.0"]}}
